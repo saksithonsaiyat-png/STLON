@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>XAUUSD BLACK</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  margin:0;
+  background:#0e0e0e;
+  color:#fff;
+}
+
+.container{
+  max-width:420px;
+  margin:40px auto;
+  padding:20px;
+  text-align:center;
+  animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+#img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 25px 50px rgba(0,0,0,.7);
+  margin-bottom:15px;
+}
+
+.thumbs{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.thumbs img{
+  width:70px;
+  border-radius:10px;
+  cursor:pointer;
+  opacity:.6;
+  transition:.3s;
+}
+
+.thumbs img:hover{
+  opacity:1;
+  transform:scale(1.05);
+}
+
+h2{
+  letter-spacing:2px;
+}
+
+.price{
+  margin:10px 0 25px;
+}
+
+.amount{
+  font-size:30px;
+  font-weight:600;
+  color:#fff;
+}
+
+.currency{
+  font-size:18px;
+  margin-left:5px;
+}
+
+.sizes{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-bottom:25px;
+}
+
+.size{
+  padding:12px 24px;
+  border-radius:12px;
+  background:#1e1e1e;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.size.active{
+  background:#f5c97a;
+  color:#000;
+  font-weight:600;
+}
+
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:16px;
+  background:#f5c97a;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:active{
+  transform:scale(.96);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- รูปหลัก -->
+  <img id="img">
+
+  <!-- รูปย่อย -->
+  <div class="thumbs">
+    <img src="SHT1.jpeg" onclick="changeImg(this.src)">
+    <img src="SHT2.jpeg" onclick="changeImg(this.src)">
+    <img src="SHT3.jpeg" onclick="changeImg(this.src)">
+  </div>
+
+  <h2 id="name">XAUUSD BLACK</h2>
+
+  <div class="price">
+    <span class="amount">199</span>
+    <span class="currency">฿</span>
+  </div>
+
+  <p>เลือกไซซ์</p>
+  <div class="sizes">
+    <div class="size" onclick="pick(this)">S</div>
+    <div class="size" onclick="pick(this)">M</div>
+    <div class="size" onclick="pick(this)">L</div>
+  </div>
+
+  <button onclick="buy()">เพิ่มลงตะกร้า</button>
+
+</div>
+
+<script>
+let selectedSize = "";
+
+// โหลดข้อมูลจากหน้าแรก (ถ้ามี)
+let img = localStorage.getItem("p_img");
+let name = localStorage.getItem("p_name");
+
+document.getElementById("img").src = img ? img : "SHT1.jpeg";
+document.getElementById("name").innerText = name ? name : "XAUUSD BLACK";
+
+function changeImg(src){
+  document.getElementById("img").src = src;
+}
+
+function pick(el){
+  document.querySelectorAll(".size").forEach(s=>s.classList.remove("active"));
+  el.classList.add("active");
+  selectedSize = el.innerText;
+}
+
+function buy(){
+  if(selectedSize===""){
+    alert("กรุณาเลือกไซซ์");
+    return;
+  }
+  alert("เพิ่ม XAUUSD BLACK ไซซ์ "+selectedSize+" ลงตะกร้าแล้ว");
+}
+</script>
+
+</body>
+</html>

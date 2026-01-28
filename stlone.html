@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>SATHERLON</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  background:#0f0f0f;
+  color:#fff;
+  font-family:Segoe UI;
+  animation:fadeIn 1.2s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(0.96);}
+  to{opacity:1; transform:scale(1);}
+}
+
+header{
+  text-align:center;
+  padding:25px;
+  letter-spacing:4px;
+  font-size:26px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  padding:30px;
+}
+
+.card{
+  background:#171717;
+  border-radius:18px;
+  overflow:hidden;
+  transition:.4s;
+  cursor:pointer;
+}
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card img{width:100%;}
+.info{padding:18px;}
+.price{color:#f5c77a;font-size:18px;}
+</style>
+</head>
+
+<body>
+
+<header>SATHERLON</header>
+
+<section class="products">
+  <div class="card" onclick="goProduct('XAUUSD BLACK','shirt1.jpg')">
+    <img src="SHT1.jpeg">
+    <div class="info">
+      <h3>XAUUSD BLACK 1</h3>
+      <div class="price">
+  <span class="amount">199</span>
+  <span class="currency">฿</span>
+</div>
+    </div>
+  </div>
+
+  <div class="card" onclick="goProduct('MINIMAL LOGO','shirt2.jpg')">
+    <img src="SHT2.jpeg">
+    <div class="info">
+      <h3>XAUUSD BLACK 2</h3>
+      <div class="price">
+  <span class="amount">199</span>
+  <span class="currency">฿</span>
+</div>
+    </div>
+  </div>
+</section>
+
+<script>
+function goProduct(name,img){
+  localStorage.setItem("p_name",name);
+  localStorage.setItem("p_img",img);
+  location.href="2.html";
+}
+</script>
+
+</body>
+</html>
